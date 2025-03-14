@@ -2,4 +2,11 @@ langchain
 pandas
 numpy
 pypdf
+tiktoken
+langgraph
+beautifulsoup4
+langchain-community
+python-dotenv
+langchain[mistralai]
+
 -e .
