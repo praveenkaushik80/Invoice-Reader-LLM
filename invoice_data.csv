@@ -1,0 +1,2 @@
+order_id,date_time,customer,address,restaurant,delivery_partner,order_details,taxes,delivery_charge,platform_fee,coupon_name,discount_amount,total_amount
+5274762576,2023-10-20T14:13:00,Hitesh,"H.no 40 indra colony Vikram marg on railway road near library house, Sadar Bazar",Frego,Sachin Kumar,"[{'Afghani Chaap Roll': '1 @ ₹140'}, {'Double Egg Roll': '1 @ ₹110'}]",0,0,0,[{'coupon': 'PAYTMUPI'}],[{'discount': 0}],254.61
