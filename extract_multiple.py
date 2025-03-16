@@ -1,7 +1,7 @@
 import os
 from extract_data import *
 from write_to_csv import *
-folder = "F:\\work\\Miscellaneous\\Chatbot\\invoice"
+folder = "F:\work\Miscellaneous\Food Order Analyst\Invoices\Zomato"
 
 for filename in os.listdir(folder):
     if filename.endswith(".pdf"):
