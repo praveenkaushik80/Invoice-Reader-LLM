@@ -14,7 +14,7 @@ class dict_format(TypedDict):
     order_id: str
     date_time: str
     customer: str
-    address: str
+    # address: str Not extracting address for privacy
     restaurant: str
     delivery_partner: str
     order_details: List[Dict[str, Optional[str]]]
