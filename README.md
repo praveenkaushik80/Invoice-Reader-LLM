@@ -66,7 +66,7 @@ The application extracts the following information from invoices:
 ## Demonstration
 To see a demonstration of the application, watch the video below:
 
-![Demonstration](demonstration.mp4)
+![Demonstration](demonstration.gif)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
