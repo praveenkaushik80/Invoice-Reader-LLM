@@ -106,7 +106,7 @@ def main():
         "Upload Invoice PDFs (Select multiple files)",
         type=["pdf"],
         accept_multiple_files=True,
-        help="You can select multiple PDF files by holding Ctrl/Cmd while selecting"
+        help="You can select multiple PDF files by holding Ctrl/Cmd while selecting. New file data is append to old data."
     )
     
     if uploaded_files:
