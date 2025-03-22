@@ -11,18 +11,19 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
 class dict_format(TypedDict):
-    order_id: str
+    invoice_id: str
     date_time: str
-    customer: str
+    receiver: str
+    provider: Optional[str]
     # address: str Not extracting address for privacy
-    restaurant: str
-    delivery_partner: str
+    restaurant: Optional[str]
+    delivery_partner: Optional[str]
     order_details: List[Dict[str, Optional[str]]]
     taxes: float
-    delivery_charge: float
-    platform_fee: float
-    coupon_name: List[Dict[str, Optional[str]]]
-    discount_amount: list[Dict[float, Optional[float]]]
+    delivery_charge: Optional[float]
+    platform_fee: Optional[float]
+    coupon_name: Optional[List[Dict[str, Optional[str]]]]
+    discount_amount: Optional[List[Dict[float, Optional[float]]]]
     total_amount: float
 
 def load_model():
