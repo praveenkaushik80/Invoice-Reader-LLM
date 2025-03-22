@@ -1,3 +1,6 @@
 {
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "f:\\work\\Miscellaneous\\Invoice-Reader-LLM\\invoice_reader_venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvInCurrentTerminal": true
 }

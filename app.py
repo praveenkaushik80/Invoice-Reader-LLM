@@ -96,19 +96,48 @@ def analyze_data(df):
     except Exception as e:
         st.error(f"Analysis error: {str(e)}")
 
+def load_sample_data():
+    sample_path = os.path.join(os.path.dirname(__file__), "sample", "sample_invoice.pdf")
+    if os.path.exists(sample_path):
+        with open(sample_path, "rb") as f:
+            return f.read()
+    return None
+
+class SampleFileUpload:
+    def __init__(self, name, content):
+        self.name = name
+        self._content = content
+
+    def getbuffer(self):
+        return self._content
+
 def main():
     st.title("📄 Invoice Data Extractor")
     initialize_session_state()
     sidebar_config()
     
-    # Extraction Section
-    uploaded_files = st.file_uploader(
-        "Upload Invoice PDFs (Select multiple files)",
-        type=["pdf"],
-        accept_multiple_files=True,
-        help="You can select multiple PDF files by holding Ctrl/Cmd while selecting. New file data is append to old data."
-    )
+    # File Upload Section
+    st.write("### Upload Files")
+    col1, col2 = st.columns([3, 1])
     
+    with col1:
+        uploaded_files = st.file_uploader(
+            "Upload Invoice PDFs",
+            type=["pdf"],
+            accept_multiple_files=True,
+            help="Select multiple PDF files by holding Ctrl/Cmd while selecting. New data is appended to existing data."
+        )
+    
+    with col2:
+        if st.button("Try Sample Data"):
+            sample_data = load_sample_data()
+            if sample_data:
+                # Create a proper file-like object
+                uploaded_files = [SampleFileUpload("sample_invoice.pdf", sample_data)]
+                st.success("Sample data loaded!")
+            else:
+                st.error("Sample file not found!")
+
     if uploaded_files:
         with st.spinner('Processing invoices...'):
             processed_files = process_files(uploaded_files)

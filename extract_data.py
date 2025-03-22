@@ -89,6 +89,6 @@ def convert_to_dict(pdf_path):
     return invoice_dict
 
 if __name__ == "__main__":
-    pdf_path = "F:\work\Miscellaneous\Chatbot\invoice\Order_ID_5274762576.pdf"
+    pdf_path = "F:\work\Miscellaneous\Invoice-Reader-LLM\sample\sample_invoice.pdf"
     invoice_dict = convert_to_dict(pdf_path)
     print(invoice_dict)
