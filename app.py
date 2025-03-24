@@ -15,6 +15,8 @@ def initialize_session_state():
         temp_file.close()
     if 'extracted_data' not in st.session_state:
         st.session_state.extracted_data = []
+    if 'processed_files' not in st.session_state:
+        st.session_state.processed_files = set()
 
 def sidebar_config():
     with st.sidebar:
@@ -50,6 +52,11 @@ def save_to_temp_csv(invoice_dict):
 
 def process_file(uploaded_file):
     try:
+        # Check if file was already processed
+        if uploaded_file.name in st.session_state.processed_files:
+            st.warning(f"File {uploaded_file.name} was already processed. Skipping...")
+            return False
+
         with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_file:
             temp_file.write(uploaded_file.getbuffer())
             temp_path = temp_file.name
@@ -60,6 +67,7 @@ def process_file(uploaded_file):
         if invoice_dict:
             if save_to_temp_csv(invoice_dict):
                 st.session_state.extracted_data.append(invoice_dict)
+                st.session_state.processed_files.add(uploaded_file.name)
                 return True
         return False
     except Exception as e:
