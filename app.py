@@ -105,7 +105,10 @@ def analyze_data(df):
         st.error(f"Analysis error: {str(e)}")
 
 def load_sample_data():
-    sample_path = ("sample/sample_invoice.pdf")
+    # Get the absolute path to the sample directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    sample_path = os.path.join(current_dir, "sample", "sample_invoice.pdf")
+    
     if os.path.exists(sample_path):
         with open(sample_path, "rb") as f:
             return f.read()
