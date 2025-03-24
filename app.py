@@ -8,7 +8,7 @@ from langchain.chat_models import init_chat_model
 
 def initialize_session_state():
     if 'api_key' not in st.session_state:
-        st.session_state.api_key = os.getenv('MISTRAL_API_KEY', '')
+        st.session_state.api_key = "aQ6ormZR1fmtk9kr2sPfchUD7zSt1jA0" # don't misuse
     if 'temp_csv' not in st.session_state:
         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
         st.session_state.temp_csv = temp_file.name
@@ -20,7 +20,9 @@ def initialize_session_state():
 
 def sidebar_config():
     with st.sidebar:
-        st.title("🔑 API Configuration")
+        st.title("🔑 API Configuration(I have input my free api key)")
+        st.markdown("[Get your Mistral API key here](https://console.mistral.ai/api-keys)")
+        st.markdown("---")
         
         # API Key input
         api_key = st.text_input(
