@@ -8,7 +8,7 @@ from langchain.chat_models import init_chat_model
 
 def initialize_session_state():
     if 'api_key' not in st.session_state:
-        st.session_state.api_key = "aQ6ormZR1fmtk9kr2sPfchUD7zSt1jA0" # don't misuse
+        st.session_state.api_key = st.secrets['Mistral_api'] # don't misuse
     if 'temp_csv' not in st.session_state:
         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
         st.session_state.temp_csv = temp_file.name
