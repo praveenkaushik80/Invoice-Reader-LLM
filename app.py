@@ -8,7 +8,8 @@ from langchain.chat_models import init_chat_model
 
 def initialize_session_state():
     if 'api_key' not in st.session_state:
-        st.session_state.api_key = st.secrets['Mistral_api'] # don't misuse
+        st.session_state.api_key = st.secrets['Mistral_api']
+        os.environ["MISTRAL_API_KEY"] = st.session_state.api_key
     if 'temp_csv' not in st.session_state:
         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
         st.session_state.temp_csv = temp_file.name
@@ -17,28 +18,6 @@ def initialize_session_state():
         st.session_state.extracted_data = []
     if 'processed_files' not in st.session_state:
         st.session_state.processed_files = set()
-
-def sidebar_config():
-    with st.sidebar:
-        st.title("🔑 API Configuration(I have input my free api key)")
-        st.markdown("[Get your Mistral API key here](https://console.mistral.ai/api-keys)")
-        st.markdown("---")
-        
-        # API Key input
-        api_key = st.text_input(
-            "MISTRAL API Key",
-            type="password",
-            value=st.session_state.api_key,
-            key="api_key_input"
-        )
-        
-        if api_key:
-            os.environ["MISTRAL_API_KEY"] = api_key
-            st.session_state.api_key = api_key
-            st.success("API Key set!")
-        else:
-            st.error("Please enter your Mistral API Key")
-            st.stop()
 
 def save_to_temp_csv(invoice_dict):
     try:
@@ -127,7 +106,6 @@ class SampleFileUpload:
 def main():
     st.title("📄 Invoice Data Extractor")
     initialize_session_state()
-    sidebar_config()
     
     # File Upload Section
     st.write("### Upload Files")
