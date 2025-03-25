@@ -1,10 +1,8 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import tempfile
 import pandas as pd
 from extract_data import convert_to_dict
-from langchain.chat_models import init_chat_model
 
 def initialize_session_state():
     if 'api_key' not in st.session_state:
