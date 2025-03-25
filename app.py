@@ -105,6 +105,17 @@ class SampleFileUpload:
 
 def main():
     st.title("📄 Invoice Data Extractor")
+    
+    # Introduction Section
+    st.header("Welcome to Invoice Data Extractor")
+    st.write("""
+    This tool helps you extract and analyze data from PDF invoices automatically. Simply upload your invoice PDFs, 
+    and the system will extract key information like amounts, dates, and vendor details. You can process multiple 
+    invoices at once and view comprehensive analytics of your data.
+    
+    Get started by uploading your invoices below or try our sample data!
+    """)
+    
     initialize_session_state()
     
     # File Upload Section
