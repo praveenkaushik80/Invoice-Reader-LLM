@@ -90,6 +90,6 @@ def convert_to_dict(pdf_path):
     return invoice_dict
 
 if __name__ == "__main__":
-    pdf_path = os.path.dirname(os.path.abspath(__file__))+"\sample\sample_invoice.pdf"
+    pdf_path = "sample/sample_invoice.pdf"
     invoice_dict = convert_to_dict(pdf_path)
     print(invoice_dict)
